@@ -27,7 +27,7 @@ const Exercise_Body = () => {
             </Box>
 
             <Box w='100%' mt='10px' pl='2px' >
-                <Exercise_Title workout_title={workout_title} exercise_title={exercise_title}/>
+                <Exercise_Title workout_id={workout_id} exercise_id={exercise_id} workout_title={workout_title} exercise_title={exercise_title}/>
             </Box>
 
             <Box w='100%' mt='30px' >

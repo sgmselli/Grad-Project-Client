@@ -1,4 +1,4 @@
-import { LOGIN, VALIDATE_AUTH, COMPLETED_WORKOUTS, PLANNED_WORKOUTS, UPDATE_WORKOUT, EXERCISES, SETS, UPDATE_SET } from "./endpoint_urls";
+import { LOGIN, VALIDATE_AUTH, COMPLETED_WORKOUTS, PLANNED_WORKOUTS, UPDATE_WORKOUT, EXERCISES, SETS, UPDATE_SET, UPDATE_EXERCISE } from "./endpoint_urls";
 import axios from 'axios';
 
 export const check_auth = async () => {
@@ -81,6 +81,24 @@ export const update_workout = async (id, ...args) => {
 export const get_exercises = async (id) => {
   try {
       const response = await axios.get(EXERCISES(id),
+          {
+          withCredentials: true, 
+          },
+          
+      );
+      return response.data
+
+    } catch (error) {
+      return {'data':error, 'status':error.status} 
+    }
+}
+
+export const update_exercise = async (workout_id, exercise_id, ...args) => {
+  try {
+      const response = await axios.patch(UPDATE_EXERCISE(workout_id, exercise_id),
+        {
+          ...args
+        },
           {
           withCredentials: true, 
           },

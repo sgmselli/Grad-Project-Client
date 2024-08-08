@@ -11,5 +11,5 @@ export const SETS = (workout_id, exercise_id) => {return `${BASE}workouts/${work
 export const UPDATE_WORKOUT = `${BASE}workouts`
 export const UPDATE_SET = (workout_id, exercise_id, set_id) => {return `${BASE}workouts/${workout_id}/exercises/${exercise_id}/exercise_sets/${set_id}`}
 
-
+export const UPDATE_EXERCISE = (workout_id, exercise_id) => {return `${BASE}workouts/${workout_id}/exercises/${exercise_id}`}
 

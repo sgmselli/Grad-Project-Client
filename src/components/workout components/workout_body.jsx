@@ -2,7 +2,7 @@ import { VStack, Flex, Box, HStack } from "@chakra-ui/react";
 
 import Workout_Title from "./workout_title";
 import Exercise_List from "./exercise_list";
-import { getSecondToLastElementFromUrl } from "../../useful_functions/functions";
+import { getNumToLastElementFromUrl } from "../../useful_functions/functions";
 import Add_Exercise_Button from "./exercise_add";
 
 import { TiTick } from "react-icons/ti";
@@ -10,6 +10,9 @@ import Back_Button from "../back_button";
 
 
 const Workout_Body = () => {
+
+    const workout_title = getNumToLastElementFromUrl(2);
+    const workout_id = getNumToLastElementFromUrl(1);
 
     return (
         <VStack w='92%' maxW='600px' pb='50px'>
@@ -19,8 +22,12 @@ const Workout_Body = () => {
             </Box>
 
             <HStack w='100%' pl='2px' pr='2px' justifyContent='space-between'  gap='20px' mt='10px'>
-                <Workout_Title title={getSecondToLastElementFromUrl()} />
-                <Completed />
+                <Box w='100%' flex='4'>
+                    <Workout_Title title={workout_title} workout_id={workout_id} />
+                </Box>
+                <Flex w='100%' flex='2' justifyContent='end'>
+                    <Completed />
+                </Flex>
             </HStack>
 
             <Box w='100%' mt='30px'>
@@ -49,7 +56,6 @@ const Completed = () => {
             transform={clicked ? 'scale(0.95)' : 'scale(1)'} // Bouncing effect
             transition="border-color 0.3s ease-in-out"
             borderRadius='4px'
-            // onClick={complete_workout}
             alignItems='center'
             justifyContent='center'
             cursor='pointer'
