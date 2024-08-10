@@ -34,7 +34,7 @@ const Workouts_List = ({workoutType}) => {
     }, [workoutType])
 
     return (
-        <VStack justifyContent='center' alignItems='center' w='100%' pb='50px'>
+        <VStack justifyContent='center' alignItems='center' w='100%' pb='50px' gap='0'>
             
             {workouts.map((workout, idx) => {
                 return (

@@ -1,4 +1,4 @@
-import { LOGIN, VALIDATE_AUTH, COMPLETED_WORKOUTS, PLANNED_WORKOUTS, UPDATE_WORKOUT, EXERCISES, SETS, UPDATE_SET, UPDATE_EXERCISE } from "./endpoint_urls";
+import { LOGIN, VALIDATE_AUTH, COMPLETED_WORKOUTS, PLANNED_WORKOUTS, UPDATE_WORKOUT, EXERCISES, SETS, UPDATE_SET, UPDATE_EXERCISE, ALL_EXERCISES, WORKOUTS } from "./endpoint_urls";
 import axios from 'axios';
 
 export const check_auth = async () => {
@@ -32,6 +32,20 @@ export const login = async (email, password) => {
       }
 }
 
+export const get_workouts = async () => {
+  try {
+      const response = await axios.get(WORKOUTS,
+          {
+          withCredentials: true, 
+          }
+      );
+      return response.data
+
+    } catch (error) {
+      return {'data':error, 'status':error.status} 
+    }
+}
+
 export const get_completed_workouts = async () => {
     try {
         const response = await axios.get(COMPLETED_WORKOUTS,
@@ -52,6 +66,25 @@ export const get_planned_workouts = async () => {
           {
           withCredentials: true, 
           }
+      );
+      return response.data
+
+    } catch (error) {
+      return {'data':error, 'status':error.status} 
+    }
+}
+
+export const add_workout = async (name) => {
+  try {
+      const response = await axios.post(UPDATE_WORKOUT,
+        {
+          name: name,
+          completed: false
+        },
+          {
+          withCredentials: true, 
+          },
+          
       );
       return response.data
 
@@ -93,12 +126,62 @@ export const get_exercises = async (id) => {
     }
 }
 
+export const get_all_exercises = async () => {
+  try {
+      const response = await axios.get(ALL_EXERCISES,
+          {
+          withCredentials: true, 
+          },
+          
+      );
+      return response.data
+
+    } catch (error) {
+      return {'data':error, 'status':error.status} 
+    }
+}
+
+export const add_exercise = async (workout_id, name) => {
+  try {
+      const response = await axios.post(EXERCISES(workout_id),
+        {
+          
+          'name':name
+          
+        },
+          {
+          withCredentials: true, 
+          },
+          
+      );
+      return response.data
+
+    } catch (error) {
+      return {'data':error, 'status':error.status} 
+    }
+}
+
 export const update_exercise = async (workout_id, exercise_id, ...args) => {
   try {
       const response = await axios.patch(UPDATE_EXERCISE(workout_id, exercise_id),
         {
           ...args
         },
+          {
+          withCredentials: true, 
+          },
+          
+      );
+      return response.data
+
+    } catch (error) {
+      return {'data':error, 'status':error.status} 
+    }
+}
+
+export const delete_exercise = async (workout_id, exercise_id) => {
+  try {
+      const response = await axios.delete(UPDATE_EXERCISE(workout_id, exercise_id),
           {
           withCredentials: true, 
           },

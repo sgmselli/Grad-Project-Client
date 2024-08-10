@@ -10,6 +10,7 @@ import PrivateRoute from './routes/private';
 import Workouts from './routes/workouts';
 import Workout from './routes/workout';
 import Exercise from './routes/exercise';
+import Add from './routes/add';
 
 function App() {
   return (
@@ -29,6 +30,13 @@ function App() {
             <Route path="/workouts/completed/:name/:id" element={<PrivateRoute><Workout /></PrivateRoute>} />
             <Route path="/workouts/completed/:name/:id/exercise/:name/:id" element={<PrivateRoute><Exercise /></PrivateRoute>} />
             <Route path="/workouts/planned/:name/:id/exercise/:name/:id" element={<PrivateRoute><Exercise /></PrivateRoute>} />
+
+            <Route path="/workouts/add_workout" element={<PrivateRoute><Add /></PrivateRoute>} />
+            
+            <Route path="/workouts/completed/:name/:id/add_exercise" element={<PrivateRoute><Add /></PrivateRoute>} />
+            <Route path="/workouts/planned/:name/:id/add_exercise" element={<PrivateRoute><Add /></PrivateRoute>} />
+
+            
 
 
 

@@ -6,7 +6,7 @@ import Exercise_Box from "./exercise_item";
 import Motion_Item from "../motion";
 
 
-const Exercise_List = () => {
+const Exercise_List = ({handleClick, clicked}) => {
 
     const [exercises, setExercises] = useState([])
     const [isVisible, setVisible] = useState(false)
@@ -28,7 +28,7 @@ const Exercise_List = () => {
             setExercises(exercises);            
         }
         fetchExecises();
-    }, [])
+    }, [clicked])
 
     return (
         <VStack justifyContent='center' alignItems='center' w='100%' pb='50px' gap='15px'>
@@ -41,6 +41,7 @@ const Exercise_List = () => {
                     idx={idx}    
                     component={
                         <Exercise_Box
+                            handleClick={handleClick}
                             exercise_id={exercise.id}
                             set_count={exercise.set_count}
                             exercise_name={exercise.name}

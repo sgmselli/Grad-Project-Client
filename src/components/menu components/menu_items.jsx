@@ -27,7 +27,7 @@ const Menu_Item_list = () => {
             'title': 'Add new workout',
             'description': 'Create a new workout from scratch or from a previous workout.',
             'icon': <IoAddCircleOutline size='28px' />,
-            'link': 'add/workout',
+            'link': 'workouts/add_workout',
         },
         {
             'title': 'Planned workouts',

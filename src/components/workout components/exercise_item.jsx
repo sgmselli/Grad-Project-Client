@@ -1,14 +1,18 @@
-import { Flex, HStack, VStack, Box, Text, Image, useColorMode } from '@chakra-ui/react';
+import { Flex, HStack, VStack, Box, Text, Button, useColorMode } from '@chakra-ui/react';
 
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { TbGridDots } from "react-icons/tb";
-import { replaceSpacesWithUnderscores } from '../../useful_functions/functions';
+import { TiDelete } from "react-icons/ti";
+import { getNumToLastElementFromUrl, replaceSpacesWithUnderscores } from '../../useful_functions/functions';
+import { delete_exercise } from '../../api/endpoints';
 
-const Exercise_Box = ({exercise_id, exercise_name, set_count}) => {
+const Exercise_Box = ({handleClick, exercise_id, exercise_name, set_count}) => {
 
     const { colorMode } = useColorMode()
     const nav = useNavigate();
+
+    const workout_id = getNumToLastElementFromUrl(1)
 
     const handleNavigate = () => {
         nav(`exercise/${replaceSpacesWithUnderscores(exercise_name)}/${exercise_id}`)
@@ -56,7 +60,7 @@ const Exercise_Box = ({exercise_id, exercise_name, set_count}) => {
             alignItems='center'
             >
                 <HStack 
-                    p='0 35px 0 30px' 
+                    p='0 26px 0 30px' 
                     justifyContent='space-between'
                     w='100%'
                     >
@@ -85,17 +89,40 @@ const Exercise_Box = ({exercise_id, exercise_name, set_count}) => {
                         </Text>
                     </VStack>
                     </Box>
-
-                    
-                    <TbGridDots size='20px' />
-
-                    {/* <Flex justifyContent='end' flex='1' w='100%' zIndex='99' onClick={(e)=>handlePropagation(e)}>
-                        <CheckBox clicked={clicked} animate={animate} workout_id={workout_id} complete_workout={complete_workout} />
-                    </Flex> */}
+                    <Exercise_Delete handleClick={handleClick} exercise_id={exercise_id} workout_id={workout_id} />
                 </HStack>
         </Flex>
         </Flex>
 
+    )
+}
+
+const Exercise_Delete = ({handleClick, exercise_id, workout_id}) => {
+
+    const { colorMode } = useColorMode();
+
+    const handleDelete = (e) => {
+        delete_exercise(workout_id, exercise_id)
+        handleClick();
+
+        e.stopPropagation();
+    }
+
+    return (
+       
+                <Button
+                onClick={(e) => handleDelete(e)}
+                _hover={ colorMode === 'light' ? {bg:'rgba(200, 200, 200, 0.3)'} : {bg:'rgba(160, 160, 160, 0.2)'}}
+                bg='none'
+                w='44px'
+                h='44px'
+                p='0'
+                color='red.300'
+            >
+                    <TiDelete size='24px'/>
+        
+
+            </Button>
     )
 }
 

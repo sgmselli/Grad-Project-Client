@@ -1,12 +1,18 @@
 import { Button, HStack, Text, useColorMode } from "@chakra-ui/react"
 import { IoAddCircleOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
     
 const Add_Exercise_Button = () => {
 
-    const { colorMode } = useColorMode();
+    const nav = useNavigate();
+
+    const handleNavigate = () => {
+        nav('add_exercise')
+    }
 
     return (
         <Button
+            onClick={handleNavigate}
             bg='blue.400'
             cursor='pointer'
             _hover={{'bg':'blue.500', 'transform':'scale(0.99)'}}

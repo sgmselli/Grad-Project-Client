@@ -1,4 +1,5 @@
 import { VStack, Flex, Box, HStack } from "@chakra-ui/react";
+import { useState } from "react";
 
 import Workout_Title from "./workout_title";
 import Exercise_List from "./exercise_list";
@@ -13,6 +14,12 @@ const Workout_Body = () => {
 
     const workout_title = getNumToLastElementFromUrl(2);
     const workout_id = getNumToLastElementFromUrl(1);
+
+    const [clicked, setClicked] = useState(false);
+
+    const handleClick = () => {
+        setClicked(!clicked);
+    }
 
     return (
         <VStack w='92%' maxW='600px' pb='50px'>
@@ -36,7 +43,7 @@ const Workout_Body = () => {
 
 
             <Box w='100%' maxW='600px' mt='20px'>
-                <Exercise_List />
+                <Exercise_List handleClick={handleClick} clicked={clicked} />
             </Box>
      
         </VStack>
