@@ -74,12 +74,13 @@ export const get_planned_workouts = async () => {
     }
 }
 
-export const add_workout = async (name) => {
+export const add_workout = async (name, date) => {
   try {
       const response = await axios.post(UPDATE_WORKOUT,
         {
           name: name,
-          completed: false
+          completed: false,
+          date:date
         },
           {
           withCredentials: true, 

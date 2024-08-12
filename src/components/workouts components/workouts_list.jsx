@@ -26,6 +26,7 @@ const Workouts_List = ({workoutType}) => {
                 setWorkouts(completed_workouts);
             } else if (workoutType === 'planned') {
                 const planned_workouts = await get_planned_workouts();
+                console.log(planned_workouts)
                 setWorkouts(planned_workouts);
             }
             
@@ -42,7 +43,7 @@ const Workouts_List = ({workoutType}) => {
                     key={idx}     
                     isVisible={isVisible}    
                     idx={idx}    
-                    component={ <Workout_Box key={idx} workout_id={workout.id} workout_name={workout.name} workout_complete={workout.completed} />}   
+                    component={ <Workout_Box key={idx} workout_id={workout.id} workout_name={workout.name} workout_complete={workout.completed} workout_date={workout.date} />}   
                 />
                 )
             })}
