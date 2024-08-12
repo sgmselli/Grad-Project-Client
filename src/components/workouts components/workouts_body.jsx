@@ -20,7 +20,7 @@ const Workouts_Body = ({workoutType}) => {
                 <Workouts_Title title={workoutType === 'completed' ? 'Completed' : 'Planned'} />
             </Box>
 
-            <Box w='100%' mt='20px'>
+            <Box w='100%' mt='10px'>
                 <Workouts_List workoutType={workoutType} />
             </Box>
 

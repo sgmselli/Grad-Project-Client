@@ -8,6 +8,8 @@ import Workout_Box from "./workout_item";
 
 const Workouts_List = ({workoutType}) => {
 
+    const { colorMode } = useColorMode();
+
     const [workouts, setWorkouts] = useState([])
     const [isVisible, setVisible] = useState(false)
 
@@ -36,9 +38,6 @@ const Workouts_List = ({workoutType}) => {
 
     return (
         <VStack justifyContent='center' alignItems='center' w='100%' pb='50px' gap='0'>
-            
-
-            
 
             {workouts.map((workout, idx) => {
 
@@ -71,25 +70,28 @@ const Workouts_List = ({workoutType}) => {
                 }
 
                 return (
+                    
                     <VStack w='100%' gap='0'>
                         {
                             idx > 0 ? (
                                 (month !== workouts[idx-1].date.split('-')[1] || year !== workouts[idx-1].date.split('-')[0]) && (
-                                    <Flex mt='30px' w='92%' maxW='600px' alignItems='start' color='gray.300'>
+                                    <Flex mt='30px' w='92%' maxW='600px' alignItems='start' color={colorMode === 'light' ? 'gray.700' : 'gray.300'}>
                                         <Text>{convertMonth(month)} {year}</Text>
                                     </Flex>
                                 )
                             ) :
-                            <Flex mt='30px' w='92%' maxW='600px' alignItems='start' color='gray.300'>
+                            <Flex mt='30px' w='92%' maxW='600px' alignItems='start' color={colorMode === 'light' ? 'gray.700' : 'gray.300'}>
                                 <Text>{convertMonth(month)} {year}</Text>
                             </Flex>
                         }
-                        <Motion_Item
+
+                        <Workout_Box key={idx} workout_id={workout.id} workout_name={workout.name} workout_complete={workout.completed} workout_date={workout.date} />
+                        {/* <Motion_Item
                             key={idx}     
                             isVisible={isVisible}    
                             idx={idx}    
                             component={ <Workout_Box key={idx} workout_id={workout.id} workout_name={workout.name} workout_complete={workout.completed} workout_date={workout.date} />}   
-                        />
+                        /> */}
                     </VStack>
                 )
             })}

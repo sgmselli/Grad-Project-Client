@@ -13,7 +13,7 @@ const Workouts_Title = ({title}) => {
                 <Text color='blue.400'>{title}</Text>
                 <Text color={colorMode === 'light' ? 'gray.600' : 'gray.300'}>workouts</Text>
             </HStack>
-            <Logo pixels={30} />
+            {/* <Logo pixels={30} /> */}
         </HStack>
     )
 }
