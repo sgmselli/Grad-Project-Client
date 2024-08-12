@@ -37,14 +37,60 @@ const Workouts_List = ({workoutType}) => {
     return (
         <VStack justifyContent='center' alignItems='center' w='100%' pb='50px' gap='0'>
             
+
+            
+
             {workouts.map((workout, idx) => {
+
+                const date = workout.date.split('-')
+                const year = date[0]
+                const month = date[1]
+
+                const convertMonth = (month) => {
+                    const monthDict = {
+                        '01': 'January',
+                        '02': 'February',
+                        '03': 'March',
+                        '04': 'April',
+                        '05': 'May',
+                        '06': 'June',
+                        '07': 'July',
+                        '08': 'August',
+                        '09': 'September',
+                        '10': 'October',
+                        '11': 'November',
+                        '12': 'December'
+                    };
+                
+                    // Check if the input is a valid two-digit string
+                    if (typeof month === 'string' && /^\d{2}$/.test(month)) {
+                        return monthDict[month] || "Invalid month"; // Return month name or invalid message
+                    } else {
+                        return "Invalid input"; // For invalid input
+                    }
+                }
+
                 return (
-                    <Motion_Item
-                    key={idx}     
-                    isVisible={isVisible}    
-                    idx={idx}    
-                    component={ <Workout_Box key={idx} workout_id={workout.id} workout_name={workout.name} workout_complete={workout.completed} workout_date={workout.date} />}   
-                />
+                    <VStack w='100%' gap='0'>
+                        {
+                            idx > 0 ? (
+                                (month !== workouts[idx-1].date.split('-')[1] || year !== workouts[idx-1].date.split('-')[0]) && (
+                                    <Flex mt='30px' w='92%' maxW='600px' alignItems='start' color='gray.300'>
+                                        <Text>{convertMonth(month)} {year}</Text>
+                                    </Flex>
+                                )
+                            ) :
+                            <Flex mt='30px' w='92%' maxW='600px' alignItems='start' color='gray.300'>
+                                <Text>{convertMonth(month)} {year}</Text>
+                            </Flex>
+                        }
+                        <Motion_Item
+                            key={idx}     
+                            isVisible={isVisible}    
+                            idx={idx}    
+                            component={ <Workout_Box key={idx} workout_id={workout.id} workout_name={workout.name} workout_complete={workout.completed} workout_date={workout.date} />}   
+                        />
+                    </VStack>
                 )
             })}
         </VStack>
