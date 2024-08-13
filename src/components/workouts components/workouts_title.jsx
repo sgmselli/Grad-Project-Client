@@ -9,7 +9,7 @@ const Workouts_Title = ({title}) => {
         
 
         <HStack gap='16px' justifyContent='center'>
-            <HStack justifyContent='center' className="rubik-bold"  color={colorMode === 'light' ? 'gray.600' : 'gray.400'} fontSize={{base: '27px', md:'34px'}}>
+            <HStack w='100%' justifyContent={{base:'center', md:'start'}} className="rubik-bold"  color={colorMode === 'light' ? 'gray.600' : 'gray.400'} fontSize={{base: '30px', md:'34px'}}>
                 <Text color='blue.400'>{title}</Text>
                 <Text color={colorMode === 'light' ? 'gray.600' : 'gray.300'}>workouts</Text>
             </HStack>

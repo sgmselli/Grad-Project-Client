@@ -14,6 +14,7 @@ import Workout from './routes/workout';
 import Exercise from './routes/exercise';
 import Add from './routes/add';
 import Subscribe from './routes/subscribe';
+import Settings from './routes/settings';
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
             <Route path="/workouts/completed/:name/:id" element={<SubscribedRoute><Workout /></SubscribedRoute>} />
             <Route path="/workouts/completed/:name/:id/exercise/:name/:id" element={<SubscribedRoute><Exercise /></SubscribedRoute>} />
             <Route path="/workouts/planned/:name/:id/exercise/:name/:id" element={<SubscribedRoute><Exercise /></SubscribedRoute>} />
+
+            <Route path="/settings" element={<SubscribedRoute><Settings /></SubscribedRoute>} />
 
             <Route path="/workouts/add_workout" element={<SubscribedRoute><Add /></SubscribedRoute>} />
             

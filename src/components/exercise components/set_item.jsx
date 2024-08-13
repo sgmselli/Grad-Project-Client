@@ -126,7 +126,7 @@ const Set_Delete = ({handleClick, set_id, exercise_id, workout_id}) => {
                 w='44px'
                 h='44px'
                 p='0'
-                color='gray.300'
+                color='red.300'
             >
                     <TiDelete size='24px'/>
         
