@@ -1,9 +1,9 @@
-import { VStack, Text, Flex, Button, useColorMode } from "@chakra-ui/react"
+import { VStack, Text, Button, useColorMode } from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom"
 
 import { useAuth } from "../../contexts/auth_context";
 
-const Landing_Sign_Up = () => {
+const LandingSignUp = () => {
 
     const nav = useNavigate();
     const { isAuthenticated } = useAuth();
@@ -22,13 +22,13 @@ const Landing_Sign_Up = () => {
 
     return (
         <VStack gap='10px'>
-            <Track_Button handleNavigate={handleNavigate}/>
-            <Sign_In handleNavigate={handleNavigate} />
+            <TrackButton handleNavigate={handleNavigate}/>
+            <SignIn handleNavigate={handleNavigate} />
         </VStack>
     )
 }
 
-const Track_Button = ({handleNavigate}) => {
+const TrackButton = ({handleNavigate}) => {
     return (
         <Button
             onClick={(route) => handleNavigate('sign_up')}
@@ -51,7 +51,7 @@ const Track_Button = ({handleNavigate}) => {
     )
 }
 
-const Sign_In = ({handleNavigate}) => {
+const SignIn = ({handleNavigate}) => {
 
     const { colorMode } = useColorMode();
 
@@ -78,4 +78,4 @@ const Sign_In = ({handleNavigate}) => {
     )
 }
 
-export default Landing_Sign_Up;
+export default LandingSignUp;

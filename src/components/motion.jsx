@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/react';
 
 const MotionBox = motion(Box);
 
-const Motion_Item = ({component, isVisible, idx}) => {
+const MotionItem = ({component, isVisible, idx}) => {
     return (
         <MotionBox
                 w='100%'
@@ -16,4 +16,4 @@ const Motion_Item = ({component, isVisible, idx}) => {
     )
 }
 
-export default Motion_Item;
+export default MotionItem;

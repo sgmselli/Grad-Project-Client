@@ -13,7 +13,6 @@ import {
 import { useState, useEffect } from "react";
 
 import Navbar from "../components/navbar"
-import Workout_Body from "../components/workout components/workout_body";
 import { useSubscribe } from "../contexts/subscribed_context";
 import { cancel_unsubscribe, check_cancellation, unsubscribe } from "../api/stripe_endpoints";
 import { useNavigate } from "react-router-dom";
@@ -135,7 +134,7 @@ const Unsubscribe = ({cancelling, setCancelling}) => {
     }
 
     const handleCancel = async () => {
-        const cancel_response = await cancel_unsubscribe();
+        await cancel_unsubscribe();
         subscribe_client();
         setCancelling(!cancelling)
     }

@@ -1,25 +1,16 @@
-import { VStack, Flex, HStack, Box, Text, useColorMode } from "@chakra-ui/react";
+import { VStack, Flex, Text, useColorMode } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { get_completed_workouts, get_planned_workouts } from "../../api/endpoints";
 
-import Motion_Item from "../motion";
-import Workout_Box from "./workout_item";
+import WorkoutBox from "./workout_item";
 
 
-const Workouts_List = ({workoutType}) => {
+const WorkoutsList = ({workoutType}) => {
 
     const { colorMode } = useColorMode();
 
     const [workouts, setWorkouts] = useState([])
-    const [isVisible, setVisible] = useState(false)
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-          setVisible(true);
-        }, 100); // Adjust the delay as needed
-        return () => clearTimeout(timer);
-      }, []);
-
+   
     useEffect(() => {
         
         const fetchWorkouts = async () => {
@@ -85,7 +76,7 @@ const Workouts_List = ({workoutType}) => {
                             </Flex>
                         }
 
-                        <Workout_Box key={idx} workout_id={workout.id} workout_name={workout.name} workout_complete={workout.completed} workout_date={workout.date} />
+                        <WorkoutBox key={idx} workout_id={workout.id} workout_name={workout.name} workout_complete={workout.completed} workout_date={workout.date} />
                         {/* <Motion_Item
                             key={idx}     
                             isVisible={isVisible}    
@@ -99,4 +90,4 @@ const Workouts_List = ({workoutType}) => {
     )
 }
 
-export default Workouts_List;
+export default WorkoutsList;

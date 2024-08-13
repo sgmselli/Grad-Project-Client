@@ -1,15 +1,15 @@
 import { VStack, Flex, Box, HStack } from "@chakra-ui/react";
 
-import Workout_Title from "./workout_title";
-import Exercise_List from "./exercise_list";
+import WorkoutTitle from "./workout_title";
+import ExerciseList from "./exercise_list";
 import { getNumToLastElementFromUrl } from "../../useful_functions/functions";
-import Add_Exercise_Button from "./exercise_add";
+import AddExerciseButton from "./exercise_add";
 
 import { TiTick } from "react-icons/ti";
-import Back_Button from "../back_button";
+import BackButton from "../back_button";
 
 
-const Workout_Body = () => {
+const WorkoutBody = () => {
 
     const workout_title = getNumToLastElementFromUrl(2);
     const workout_id = getNumToLastElementFromUrl(1);
@@ -18,12 +18,12 @@ const Workout_Body = () => {
         <VStack w='92%' maxW='600px' pb='50px'>
 
             <Box w='100%' mt='20px'>
-                <Back_Button />
+                <BackButton />
             </Box>
 
             <HStack w='100%' pl='2px' pr='2px' justifyContent='space-between'  gap='20px' mt='10px'>
                 <Box w='100%' flex='4'>
-                    <Workout_Title title={workout_title} workout_id={workout_id} />
+                    <WorkoutTitle title={workout_title} workout_id={workout_id} />
                 </Box>
                 <Flex w='100%' flex='2' justifyContent='end'>
                     <Completed />
@@ -31,12 +31,12 @@ const Workout_Body = () => {
             </HStack>
 
             <Box w='100%' mt='30px'>
-                <Add_Exercise_Button />
+                <AddExerciseButton />
             </Box>
 
 
             <Box w='100%' maxW='600px' mt='20px'>
-                <Exercise_List />
+                <ExerciseList />
             </Box>
      
         </VStack>
@@ -76,4 +76,4 @@ const Completed = () => {
 }
 
 
-export default Workout_Body;
+export default WorkoutBody;

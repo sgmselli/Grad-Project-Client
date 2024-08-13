@@ -1,10 +1,10 @@
-import { VStack, Flex, Box, useColorMode, Text } from "@chakra-ui/react";
+import { VStack, Box, useColorMode, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import Back_Button from "../back_button";
+import BackButton from "../back_button";
 import AddInputSection from "./add_input";
 import { getNumToLastElementFromUrl } from "../../useful_functions/functions";
 
-const Add_Body = () => {
+const AddBody = () => {
 
     const add_type = getNumToLastElementFromUrl(1)
 
@@ -26,7 +26,7 @@ const Add_Body = () => {
         <VStack maxW='600px' w='92%' pb='50px'>
 
             <Box w='100%' mt='20px'>
-                <Back_Button />
+                <BackButton />
             </Box>
 
             <VStack position='absolute'  bottom='55%' top='45%' w='92%' maxW='600px' justifyContent='center' alignItems='center' gap={{base:'20px', md:'30px'}}>
@@ -47,4 +47,4 @@ const Title = ({title}) => {
     )
 }
 
-export default Add_Body;
+export default AddBody;

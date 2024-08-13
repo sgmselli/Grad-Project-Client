@@ -1,7 +1,7 @@
-import { VStack, HStack, Flex, Text, Box, useColorMode, Button, Divider, AbsoluteCenter, FormControl, FormLabel, Input, InputRightElement, InputGroup  } from "@chakra-ui/react"
+import { VStack, HStack, Flex, Text, Box, useColorMode, Button, Divider, AbsoluteCenter, FormControl, FormLabel, Input, InputRightElement, InputGroup, useToast  } from "@chakra-ui/react"
 
 import { useState } from "react";
-import { IoSend, IoEyeOutline, IoEyeOffOutline  } from "react-icons/io5";
+import { IoEyeOutline, IoEyeOffOutline  } from "react-icons/io5";
 import { GrFormNextLink } from "react-icons/gr";
 import { check_subscribed, login } from "../../api/endpoints";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ import { useAuth } from "../../contexts/auth_context";
 import { useSubscribe } from "../../contexts/subscribed_context";
 
 
-const Sign_In_Form = () => {
+const SignInForm = () => {
 
 
     return (
@@ -18,12 +18,12 @@ const Sign_In_Form = () => {
             w='100%' 
             justifyContent='center'
             >
-            <Form_Box />
+            <FormBox />
         </Flex>
     )   
 }
 
-const Form_Box = () => {
+const FormBox = () => {
 
     const { colorMode } = useColorMode();
 
@@ -42,8 +42,8 @@ const Form_Box = () => {
             
             >
                 <VStack w='80%' gap='40px'>
-                    <Google_Sign_In />
-                    <Form_Divider />
+                    <GoogleSignIn />
+                    <FormDivider />
                     <Form />
                 </VStack>
             
@@ -51,7 +51,7 @@ const Form_Box = () => {
     )
 }
 
-const Form_Divider = () => {
+const FormDivider = () => {
 
     const { colorMode } = useColorMode();
 
@@ -71,15 +71,15 @@ const Form_Divider = () => {
     );
   };
 
-const Google_Sign_In = () => {
+const GoogleSignIn = () => {
     return (
         <VStack w='100%'>
-            <Google_Button />
+            <GoogleButton />
         </VStack>
     )
 }
 
-const Google_Button = () => {
+const GoogleButton = () => {
 
     const { colorMode } = useColorMode();
 
@@ -112,6 +112,7 @@ const Google_Button = () => {
 const Form = () => {
 
     const nav = useNavigate();
+    const toast = useToast();
     const { colorMode } = useColorMode();
 
     const {login_client} = useAuth();
@@ -124,21 +125,36 @@ const Form = () => {
         
         const login_response = await login(email, password);
 
-        if (login_response['status'] == 200) {
-            login_client()
+        if (login_response['status'] === 200) {
+            await login_client()
             const subscribed = await check_subscribed();
 
             if (subscribed) {
                 subscribe_client();
-                nav('/menu')
+                await nav('/menu')
             }
             else {
-                login_client()
-                nav('/subscribe')
+                await nav('/subscribe')
             }
 
+            toast({
+                position:'top',
+                title: 'Login successful.',
+                description: "You have successfully logged in to your account.",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
+
         } else {
-            alert('error')
+            toast({
+                position:'top',
+                title: 'Login error.',
+                description: "Incorrect username or password.",
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+              })
         }
         
     }
@@ -154,7 +170,7 @@ const Form = () => {
                 <Input onChange={(e) => setEmail(e.target.value)} value={email} h='46px' borderColor='gray.400' type='email' placeholder='gym@bro.com' />
             </FormControl>
 
-            <Password_Field password={password} setPassword={setPassword} />
+            <PasswordField password={password} setPassword={setPassword} />
 
             <Button
             onClick={handleSignIn}
@@ -184,7 +200,7 @@ const Form = () => {
     )
 }
 
-const Password_Field = ({setPassword, password}) => {
+const PasswordField = ({setPassword, password}) => {
 
     const { colorMode } = useColorMode();
 
@@ -230,4 +246,4 @@ const Password_Field = ({setPassword, password}) => {
     )
 }
 
-export default Sign_In_Form;
+export default SignInForm;

@@ -34,7 +34,6 @@ export const unsubscribe = async () => {
 export const cancel_unsubscribe = async () => {
   try {
     const response = await axios.post(STRIPE_CANCEL_UNSUBSCRIBE,
-    {},
     {
       withCredentials: true, 
     });

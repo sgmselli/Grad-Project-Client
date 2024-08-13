@@ -1,6 +1,4 @@
 import { Flex, HStack, Text, Box, Button, useColorMode } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-
 import Logo from "./logo";
 import { FaRegMoon } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
@@ -77,7 +75,7 @@ const Title = () => {
     const nav = useNavigate();
 
     const handleNavigate = () => {
-        if (!isAuthenticated) {
+        if (!isAuthenticated || window.location.pathname === '/subscribe' || window.location.pathname === '/') {
             nav('/');
         } else {
             nav('/menu')

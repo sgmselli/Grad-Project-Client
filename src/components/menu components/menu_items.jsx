@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 
-import { VStack, Flex, HStack, Box, Text, useColorMode, Menu } from "@chakra-ui/react";
+import { VStack, Flex, HStack, Text, useColorMode } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 import { IoAddCircleOutline } from "react-icons/io5";
 import { GrPlan } from "react-icons/gr";
 import { SiTicktick } from "react-icons/si";
-import { VscGraph } from "react-icons/vsc";
 import { MdSettings } from "react-icons/md";
 
-import Motion_Item from "../motion";
+import MotionItem from "../motion";
 
-const Menu_Item_list = () => {
+const MenuItemlist = () => {
 
     const [isVisible, setVisible] = useState(false)
 
@@ -61,11 +60,11 @@ const Menu_Item_list = () => {
                 items.map((item, idx) => {
                     return (
 
-                        <Motion_Item
+                        <MotionItem
                             key={idx}     
                             isVisible={isVisible}    
                             idx={idx}    
-                            component={<Menu_Item title={item.title} description={item.description} icon={item.icon} link={item.link} />}   
+                            component={<MenuItem title={item.title} description={item.description} icon={item.icon} link={item.link} />}   
                         />
                     )
                 })
@@ -75,7 +74,7 @@ const Menu_Item_list = () => {
 }
 
 
-const Menu_Item = ({title, description, icon, link}) => {
+const MenuItem = ({title, description, icon, link}) => {
 
     const nav = useNavigate();
     const { colorMode } = useColorMode();
@@ -120,4 +119,4 @@ const Menu_Item = ({title, description, icon, link}) => {
     )
 }
 
-export default Menu_Item_list;
+export default MenuItemlist;

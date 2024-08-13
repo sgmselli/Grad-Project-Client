@@ -1,13 +1,11 @@
 import { Flex, HStack, VStack, Box, Text, Button, useColorMode } from '@chakra-ui/react';
 
-import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { TbGridDots } from "react-icons/tb";
 import { TiDelete } from "react-icons/ti";
 import { getNumToLastElementFromUrl, replaceSpacesWithUnderscores } from '../../useful_functions/functions';
 import { delete_exercise } from '../../api/endpoints';
 
-const Exercise_Box = ({handleClick, exercise_id, exercise_name, set_count}) => {
+const ExerciseBox = ({handleClick, exercise_id, exercise_name, set_count}) => {
 
     const { colorMode } = useColorMode()
     const nav = useNavigate();
@@ -17,28 +15,6 @@ const Exercise_Box = ({handleClick, exercise_id, exercise_name, set_count}) => {
     const handleNavigate = () => {
         nav(`exercise/${replaceSpacesWithUnderscores(exercise_name)}/${exercise_id}`)
     }
-
-    /**
-     * Prevents the click bubbling up to the workout box so when we check complete workout we don't get navigated
-     * 
-     * @param {*} e 
-     */
-    // const handlePropagation = (e) => {
-    //     e.stopPropagation();
-    // }
-
-    /**
-     *  When you click the checkbox, start an aninmation for .3 seconds and set clicked to the opposite of what it was
-     * 
-     */
-    // const complete_workout = () => {
-    //     setAnimate(true)
-    //     setClicked(!clicked);
-
-    //     setTimeout(() => {
-    //         setAnimate(false);
-    //     }, 300); 
-    // }
 
     return (
         <Flex w='100%' justifyContent='center' alignItems='center'>
@@ -89,7 +65,7 @@ const Exercise_Box = ({handleClick, exercise_id, exercise_name, set_count}) => {
                         </Text>
                     </VStack>
                     </Box>
-                    <Exercise_Delete handleClick={handleClick} exercise_id={exercise_id} workout_id={workout_id} />
+                    <ExerciseDelete handleClick={handleClick} exercise_id={exercise_id} workout_id={workout_id} />
                 </HStack>
         </Flex>
         </Flex>
@@ -97,7 +73,7 @@ const Exercise_Box = ({handleClick, exercise_id, exercise_name, set_count}) => {
     )
 }
 
-const Exercise_Delete = ({handleClick, exercise_id, workout_id}) => {
+const ExerciseDelete = ({handleClick, exercise_id, workout_id}) => {
 
     const { colorMode } = useColorMode();
 
@@ -126,4 +102,4 @@ const Exercise_Delete = ({handleClick, exercise_id, workout_id}) => {
     )
 }
 
-export default Exercise_Box;
+export default ExerciseBox;

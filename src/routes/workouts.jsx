@@ -2,7 +2,7 @@ import { useColorMode, VStack } from "@chakra-ui/react"
 import { useState, useEffect } from "react";
 
 import Navbar from "../components/navbar"
-import Workouts_Body from "../components/workouts components/workouts_body";
+import WorkoutsBody from "../components/workouts components/workouts_body";
 
 const Workouts = () => {
 
@@ -31,7 +31,7 @@ const Workouts = () => {
             bg={colorMode ==='light' ? '#FAFAFA' : '#3A3A43'}
         >
             <Navbar />
-            <Workouts_Body workoutType={workoutType} />
+            <WorkoutsBody workoutType={workoutType} />
         </VStack>
     )
 }

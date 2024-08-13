@@ -1,12 +1,11 @@
 import { Flex, HStack, Box, Text, useColorMode, Input, InputRightElement, InputGroup, Button } from '@chakra-ui/react';
 import { useState } from 'react';
 
-import { TbGridDots } from "react-icons/tb";
-import { getFifthToLastElementFromUrl, getNumToLastElementFromUrl } from '../../useful_functions/functions';
+import { getNumToLastElementFromUrl } from '../../useful_functions/functions';
 import { delete_set, update_set } from '../../api/endpoints';
 import { TiDelete } from "react-icons/ti";
 
-const Set_Box = ({handleClick, set_num, set_id, exercise_id, set_weight, set_reps}) => {
+const SetBox = ({handleClick, set_num, set_id, exercise_id, set_weight, set_reps}) => {
 
     const { colorMode } = useColorMode()
 
@@ -59,17 +58,17 @@ const Set_Box = ({handleClick, set_num, set_id, exercise_id, set_weight, set_rep
                     </Box>
                     <Box flex='15' w='100%'>
                         <HStack gap='15px'>
-                            <Set_Input metric='Kg' set_value={weight} change_set_value={setWeight} update_value={updateWeight} />
+                            <SetInput metric='Kg' set_value={weight} change_set_value={setWeight} update_value={updateWeight} />
                             <Text
                                 className='rubik-medium'
                             >
                                 x
                             </Text>
-                            <Set_Input metric='Reps' set_value={reps} change_set_value={setReps} update_value={updateReps}/>
+                            <SetInput metric='Reps' set_value={reps} change_set_value={setReps} update_value={updateReps}/>
                         </HStack>
                     </Box>
                     <Flex flex='3' justifyContent='end' w='100%'>
-                        <Set_Delete handleClick={handleClick} set_id={set_id} exercise_id={exercise_id} workout_id={workout_id} />
+                        <SetDelete handleClick={handleClick} set_id={set_id} exercise_id={exercise_id} workout_id={workout_id} />
                     </Flex>
                 </HStack>
         </Flex>
@@ -78,7 +77,7 @@ const Set_Box = ({handleClick, set_num, set_id, exercise_id, set_weight, set_rep
     )
 }
 
-const Set_Input = ({metric, set_value, change_set_value, update_value}) => {
+const SetInput = ({metric, set_value, change_set_value, update_value}) => {
 
     const { colorMode } = useColorMode()
 
@@ -108,7 +107,7 @@ const Set_Input = ({metric, set_value, change_set_value, update_value}) => {
     )
 }
 
-const Set_Delete = ({handleClick, set_id, exercise_id, workout_id}) => {
+const SetDelete = ({handleClick, set_id, exercise_id, workout_id}) => {
 
     const { colorMode } = useColorMode();
 
@@ -135,4 +134,4 @@ const Set_Delete = ({handleClick, set_id, exercise_id, workout_id}) => {
     )
 }
 
-export default Set_Box;
+export default SetBox;

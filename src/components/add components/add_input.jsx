@@ -1,13 +1,9 @@
-import { VStack, Button, HStack, Text, Input, Box, Flex, useColorMode } from "@chakra-ui/react"
+import { VStack, Button, HStack, Text, Input, Box, useColorMode } from "@chakra-ui/react"
 import {
     Menu,
     MenuButton,
     MenuList,
-    MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuDivider,
+    MenuItem
   } from '@chakra-ui/react'
 import { GrFormNextLink } from "react-icons/gr";
 import { FaAngleDown } from "react-icons/fa";
@@ -61,7 +57,7 @@ const AddInput = ({changeDate, add_type, changedTitle, handleTitleChange}) => {
             }
         }
         fetch_values();
-    }, [])
+    }, [add_type])
 
     const handleInput = (title) => {
         handleTitleChange(title);
@@ -143,7 +139,7 @@ const DateInput = ({changeDate}) => {
 
     useEffect(() => {
         changeDate(day, month, year)
-    }, [day, month, year])
+    }, [day, month, year, changeDate])
 
     return (
         <HStack>

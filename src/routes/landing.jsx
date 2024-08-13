@@ -1,9 +1,8 @@
 import { VStack, useColorMode } from "@chakra-ui/react"
 
 
-import Landing_Body from "../components/landing components/landing_body"
+import LandingBody from "../components/landing components/landing_body"
 import Navbar from "../components/navbar"
-import LoadingBar from "../components/loading_bar"
 
 const Landing = () => {
 
@@ -16,9 +15,8 @@ const Landing = () => {
                 h='100%'
                 bg={colorMode ==='light' ? '#FAFAFA' : '#3A3A43'}
             >
-                {/* <LoadingBar /> */}
                 <Navbar />
-                <Landing_Body />
+                <LandingBody />
             </VStack>
     )
 }

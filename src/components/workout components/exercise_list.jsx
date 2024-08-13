@@ -1,12 +1,12 @@
-import { VStack, Flex, HStack, Box, Text, useColorMode } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { get_completed_workouts, get_exercises, get_planned_workouts } from "../../api/endpoints";
-import Exercise_Box from "./exercise_item";
+import { get_exercises } from "../../api/endpoints";
+import ExerciseBox from "./exercise_item";
 
-import Motion_Item from "../motion";
+import MotionItem from "../motion";
 
 
-const Exercise_List = ({handleClick, clicked}) => {
+const ExerciseList = ({handleClick, clicked}) => {
 
     const [exercises, setExercises] = useState([])
     const [isVisible, setVisible] = useState(false)
@@ -35,18 +35,18 @@ const Exercise_List = ({handleClick, clicked}) => {
             
             {exercises.map((exercise, idx) => {
                 return (
-                    <Motion_Item
+                    <MotionItem
                     key={idx}     
                     isVisible={isVisible}    
                     idx={idx}    
                     component={
-                        <Exercise_Box
+                        <ExerciseBox
                             handleClick={handleClick}
                             exercise_id={exercise.id}
                             set_count={exercise.set_count}
                             exercise_name={exercise.name}
                         >
-                        </Exercise_Box>
+                        </ExerciseBox>
                     }   
                 />
                 )
@@ -55,4 +55,4 @@ const Exercise_List = ({handleClick, clicked}) => {
     )
 }
 
-export default Exercise_List;
+export default ExerciseList;

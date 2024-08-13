@@ -1,6 +1,6 @@
 import { useColorMode, Input } from "@chakra-ui/react";
 
-export const Dynamic_Title = ({title, changeTitle, updateTitle}) => {
+export const DynamicTitle = ({title, changeTitle, updateTitle}) => {
 
     const { colorMode } = useColorMode();
 

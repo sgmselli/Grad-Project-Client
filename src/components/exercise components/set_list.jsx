@@ -1,11 +1,11 @@
-import { VStack, Flex } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { get_sets } from "../../api/endpoints";
 
-import Motion_Item from "../motion";
-import Set_Box from "./set_item";
+import MotionItem from "../motion";
+import SetBox from "./set_item";
 
-const Set_List = ({handleClick, clicked, workout_id, exercise_id}) => {
+const SetList = ({handleClick, clicked, workout_id, exercise_id}) => {
 
     const [sets, setSets] = useState([])
     const [isVisible, setVisible] = useState(false)
@@ -23,19 +23,19 @@ const Set_List = ({handleClick, clicked, workout_id, exercise_id}) => {
             setSets(sets);            
         }
         fetchSets();
-    }, [clicked])
+    }, [clicked, workout_id, exercise_id])
 
     return (
         <VStack justifyContent='center' alignItems='center' w='100%' pb='50px' gap='15px'>
             
             {sets.map((set, idx) => {
                 return (
-                    <Motion_Item
+                    <MotionItem
                     key={idx}     
                     isVisible={isVisible}    
                     idx={idx}    
                     component={
-                        <Set_Box
+                        <SetBox
                             handleClick={handleClick}
                             set_num={idx+1}
                             set_id={set.id}
@@ -51,4 +51,4 @@ const Set_List = ({handleClick, clicked, workout_id, exercise_id}) => {
     )
 }
 
-export default Set_List;
+export default SetList;

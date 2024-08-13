@@ -1,8 +1,8 @@
-import { Button, HStack, Text, useColorMode } from "@chakra-ui/react"
+import { Button, HStack, Text } from "@chakra-ui/react"
 import { IoAddCircleOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
     
-const Add_Exercise_Button = () => {
+const AddExerciseButton = () => {
 
     const nav = useNavigate();
 
@@ -29,4 +29,4 @@ const Add_Exercise_Button = () => {
     )
 }
 
-export default Add_Exercise_Button;
+export default AddExerciseButton;

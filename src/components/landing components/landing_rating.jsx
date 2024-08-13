@@ -4,20 +4,20 @@ import { FaRegStarHalfStroke } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
 
-const Landing_Rating = () => {
+const LandingRating = () => {
     return (
         <VStack w='100%' gap='22px'>
             <Flex w='100%' h='50px' justifyContent='center' alignItems='center'>
-                <Avatar_List />
+                <AvatarList />
             </Flex>
             <Box w='100%'>
-                <Star_Rating />
+                <StarRating />
             </Box>
         </VStack>
     )
 }
 
-const Avatar_List = () => {
+const AvatarList = () => {
 
     const avatars = [
         { name: 'User 1', src: '/images/profile-picture1.jpg' },
@@ -30,7 +30,7 @@ const Avatar_List = () => {
     return (
         <Flex w='fit-content' justifyContent="center" alignItems='center' position='relative' left='40px'>
                 {avatars.map((avatar, index) => (
-                    <Avatar_Item
+                    <AvatarItem
                         key={index}
                         name={avatar.name}
                         src={avatar.src}
@@ -41,7 +41,7 @@ const Avatar_List = () => {
     )
 }
 
-const Avatar_Item = ({name, src, index}) => {
+const AvatarItem = ({name, src, index}) => {
 
     const { colorMode } = useColorMode()
 
@@ -69,16 +69,16 @@ const Avatar_Item = ({name, src, index}) => {
     )
 }
 
-const Star_Rating = () => {
+const StarRating = () => {
     return (
         <VStack w='100%' gap='16px'>
-            <Star_List />
-            <Rating_Text />
+            <StarList />
+            <RatingText />
         </VStack>
     )
 }
 
-const Rating_Text = () => {
+const RatingText = () => {
 
     const { colorMode } = useColorMode()
 
@@ -94,7 +94,7 @@ const Rating_Text = () => {
     )
 }
 
-const Star_List = () => {
+const StarList = () => {
 
     const stars = ['full', 'full', 'full', 'full', 'half']
 
@@ -103,7 +103,7 @@ const Star_List = () => {
             {stars.map((star) => {
                 return (
                     <Box color='#FFD700'>
-                        <Star_Factory star={star} />
+                        <StarFactory star={star} />
                     </Box>
             )
             })}
@@ -112,26 +112,26 @@ const Star_List = () => {
     )
 }
 
-const Star_Factory = ({star}) => {
-    if (star == 'full') {
-        return <Full_Star />
-    } else if (star == 'half') {
-        return <Half_Star />
-    } else if (star == 'empty') {
-        return <Empty_Star />
+const StarFactory = ({star}) => {
+    if (star === 'full') {
+        return <FullStar />
+    } else if (star === 'half') {
+        return <HalfStar />
+    } else if (star === 'empty') {
+        return <EmptyStar />
     }
 }
 
-const Full_Star = () => {
+const FullStar = () => {
     return <FaStar size='24px' />
 }
 
-const Half_Star = () => {
+const HalfStar = () => {
     return <FaRegStarHalfStroke size='24px' />
 }
 
-const Empty_Star = () => {
+const EmptyStar = () => {
     return <FaRegStar size='24px' />
 }
 
-export default Landing_Rating;
+export default LandingRating;

@@ -1,14 +1,12 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react'
-import { useEffect } from 'react';
 import { AuthProvider } from './contexts/auth_context';
 import { SubscribedProvider } from './contexts/subscribed_context';
 import Landing from './routes/landing';
-import Sign_Up from './routes/sign_up';
-import Sign_In from './routes/sign_in';
+import SignUp from './routes/sign_up';
+import SignIn from './routes/sign_in';
 import Menu from './routes/menu';
 import SubscribedRoute from './routes/private'
-import AuthenticatedRoute from './routes/private'
 import Workouts from './routes/workouts';
 import Workout from './routes/workout';
 import Exercise from './routes/exercise';
@@ -24,8 +22,8 @@ function App() {
         <ChakraProvider>
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/sign_up" element={<Sign_Up />} />
-            <Route path="/sign_in" element={<Sign_In />} />
+            <Route path="/sign_up" element={<SignUp />} />
+            <Route path="/sign_in" element={<SignIn />} />
             <Route path="/subscribe" element={<Subscribe />} />
 
 

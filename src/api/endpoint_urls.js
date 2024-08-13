@@ -2,7 +2,9 @@ const BASE = `http://localhost:3000/api/v1/`
 
 export const VALIDATE_AUTH = `${BASE}auth/validate`
 export const LOGIN = `${BASE}sign_in`
-export const LOGOUT= `${BASE}sign_out`
+export const REGISTER = `${BASE}sign_up`
+export const LOGOUT = `${BASE}sign_out`
+export const USER = `${BASE}user_details`
 
 export const WORKOUTS = `${BASE}workouts`
 export const COMPLETED_WORKOUTS = `${BASE}workouts/completed`

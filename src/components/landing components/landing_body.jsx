@@ -1,27 +1,27 @@
 import { VStack, Box } from "@chakra-ui/react"
-import Landing_Title from "./landing_titles"
-import Landing_Sign_Up from "./landing_sign_up"
-import Landing_Rating from "./landing_rating"
-import Landing_Workout_Example from "./landing_workout_example"
+import LandingTitle from "./landing_titles"
+import LandingSignUp from "./landing_sign_up"
+import LandingRating from "./landing_rating"
+import LandingWorkoutExample from "./landing_workout_example"
 
-const Landing_Body = () => {
+const LandingBody = () => {
     return (
         <VStack w='100%' pb='50px'>
             <Box mt={{base:'16px', md:'30px'}} w='100%'>
-                <Landing_Title />
+                <LandingTitle />
             </Box>
             <Box mt={{base:'30px', md:'50px'}} w='100%'>
-                <Landing_Sign_Up />
+                <LandingSignUp />
             </Box>
             <Box mt={{base:'20px', md:'40px'}} w='100%'>
-                <Landing_Rating />
+                <LandingRating />
             </Box>
             <Box mt={{base:'55px', md:'75px'}} w='100%'>
-                <Landing_Workout_Example />
+                <LandingWorkoutExample />
             </Box>
 
         </VStack>
     )
 }
 
-export default Landing_Body
+export default LandingBody

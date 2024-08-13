@@ -1,12 +1,12 @@
-import { Flex, HStack, VStack, Box, Text, Image, useColorMode } from '@chakra-ui/react';
+import { Flex, HStack, VStack, Box, Text, useColorMode } from '@chakra-ui/react';
 import { TiTick } from "react-icons/ti";
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { update_workout } from '../../api/endpoints';
 import { useNavigate } from 'react-router-dom';
 import { replaceSpacesWithUnderscores } from '../../useful_functions/functions';
 
-const Workout_Box = ({workout_id, workout_name, workout_complete, workout_date}) => {
+const WorkoutBox = ({workout_id, workout_name, workout_complete, workout_date}) => {
 
     const { colorMode } = useColorMode()
     const nav = useNavigate();
@@ -178,4 +178,4 @@ const CheckBox = ({clicked, animate, workout_id, complete_workout}) => {
     )
 }
 
-export default Workout_Box;
+export default WorkoutBox;

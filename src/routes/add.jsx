@@ -1,7 +1,7 @@
 import { useColorMode, VStack } from "@chakra-ui/react"
 
 import Navbar from "../components/navbar"
-import Add_Body from "../components/add components/add_body";
+import AddBody from "../components/add components/add_body";
 
 
 const Add = () => {
@@ -15,7 +15,7 @@ const Add = () => {
             bg={colorMode ==='light' ? '#FAFAFA' : '#3A3A43'}
         >
             <Navbar />
-            <Add_Body />
+            <AddBody />
         </VStack>
     )
 }

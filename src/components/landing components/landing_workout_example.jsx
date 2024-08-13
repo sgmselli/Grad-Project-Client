@@ -3,18 +3,18 @@ import { TiTick } from "react-icons/ti";
 
 import { useState, useEffect } from 'react'
 
-const Landing_Workout_Example = () => {
+const LandingWorkoutExample = () => {
     return (
         <VStack  w='100%' justifyContent='center' gap='0' >
             <Flex w='92%' maxW='600px' justifyContent='end'>
-                <Helper_Text/>
+                <HelperText/>
             </Flex>
-            <Workout_Box />
+            <WorkoutBox />
         </VStack>
     )
 }
 
-const Workout_Box = () => {
+const WorkoutBox = () => {
 
     const { colorMode } = useColorMode()
 
@@ -31,7 +31,7 @@ const Workout_Box = () => {
         setClicked(true);
 
         setTimeout(() => {
-            if (workout_id == workouts.length-1)
+            if (workout_id === workouts.length-1)
                 setWorkoutId(0);
             else {
                 setWorkoutId(workout_id+1);
@@ -47,9 +47,7 @@ const Workout_Box = () => {
             h='84px' 
             bg={colorMode === 'light' ? clicked ? '#ECECEC' : 'white' : clicked ? '' : 'rgba(66,66,83,26.67)' }
             transition="background-color 0.3s ease-in-out"
-            // border='1px solid' 
             transform={clicked ? 'scale(0.98)' : 'scale(1)'}
-            borderColor='gray.300' 
             borderRadius='10px'
             mt='18px'
             boxShadow={colorMode === 'light' ? '0px 2px 25px 0px #F1F1F1' : '0px' }
@@ -109,7 +107,7 @@ const CheckBox = ({clicked, complete_workout}) => {
     )
 }
 
-const Helper_Text = () => {
+const HelperText = () => {
     return (
         <Flex w='fit-content' position='absolute' zIndex='99'>
             <Text
@@ -143,4 +141,4 @@ const Arrow = () => {
     )
 }
 
-export default Landing_Workout_Example;
+export default LandingWorkoutExample;

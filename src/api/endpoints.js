@@ -1,4 +1,4 @@
-import { LOGIN, VALIDATE_AUTH, COMPLETED_WORKOUTS, PLANNED_WORKOUTS, UPDATE_WORKOUT, EXERCISES, SETS, UPDATE_SET, UPDATE_EXERCISE, ALL_EXERCISES, WORKOUTS, VALIDATE_SUBSCRIBED, LOGOUT } from "./endpoint_urls";
+import { LOGIN, VALIDATE_AUTH, COMPLETED_WORKOUTS, PLANNED_WORKOUTS, UPDATE_WORKOUT, EXERCISES, SETS, UPDATE_SET, UPDATE_EXERCISE, ALL_EXERCISES, WORKOUTS, VALIDATE_SUBSCRIBED, LOGOUT, REGISTER, USER } from "./endpoint_urls";
 import axios from 'axios';
 
 export const check_auth = async () => {
@@ -28,6 +28,42 @@ export const check_subscribed = async () => {
   }
 }
 
+export const user_details = async () => {
+  try {
+    const response = await axios.get(USER,
+    {
+      withCredentials: true, 
+    });
+    localStorage.setItem('userState', response.data)
+    return response.data
+
+  } catch (error) {
+    return false
+  }
+}
+
+export const register = async (name, email, password, password_confirmation) => {
+  try {
+      const response = await axios.post(REGISTER, {
+      
+      user: {
+        name: name,
+        email: email,
+        password: password,
+        password_confirmation: password_confirmation
+      }
+        
+      },
+      {
+      withCredentials: true, 
+      }
+  );
+      return response
+
+    } catch (error) {
+      return {'data':error, 'status':error.status} 
+    }
+}
 
 export const login = async (email, password) => {
     try {

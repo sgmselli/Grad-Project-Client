@@ -1,8 +1,8 @@
-import { Button, HStack, Text, useColorMode } from "@chakra-ui/react"
+import { Button, HStack, Text } from "@chakra-ui/react"
 import { IoAddCircleOutline } from "react-icons/io5";
 import { add_set } from "../../api/endpoints";
     
-const Add_Set_Button = ({handleClick, workout_id, exercise_id}) => {
+const AddSetButton = ({handleClick, workout_id, exercise_id}) => {
 
     const handleAdd = () => {
         add_set(workout_id, exercise_id);
@@ -28,4 +28,4 @@ const Add_Set_Button = ({handleClick, workout_id, exercise_id}) => {
     )
 }
 
-export default Add_Set_Button;
+export default AddSetButton;

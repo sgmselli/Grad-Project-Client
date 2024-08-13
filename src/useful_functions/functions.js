@@ -53,3 +53,5 @@ export const getFifthToLastElementFromUrl = () => {
     
     return fifthToLastElement;
 }
+
+export default getNumToLastElementFromUrl;

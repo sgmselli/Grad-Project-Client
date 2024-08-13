@@ -1,21 +1,19 @@
 import { VStack, Flex, Box } from "@chakra-ui/react";
 
-import Menu_Title from "./menu_title";
-import Menu_Item_list from "./menu_items";
-import Back_Button from "../back_button";
+import MenuTitle from "./menu_title";
+import MenuItemlist from "./menu_items";
 
-
-const Menu_Body = () => {
+const MenuBody = ({name}) => {
 
     return (
         <VStack w='100%' pb='50px'>
 
             <Flex justifyContent='center' alignItems='center' w='100%' mt='30px'>
-                <Menu_Title />
+                <MenuTitle name={name} />
             </Flex>
 
             <Box w='100%' mt='30px'>
-                <Menu_Item_list />
+                <MenuItemlist />
             </Box>
      
         </VStack>
@@ -23,4 +21,4 @@ const Menu_Body = () => {
 }
 
 
-export default Menu_Body;
+export default MenuBody;
