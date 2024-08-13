@@ -3,11 +3,37 @@ import { Navigate } from 'react-router-dom';
 import { useColorMode, VStack } from "@chakra-ui/react"
 
 import { useAuth } from '../contexts/auth_context';
-import Sign_In from './sign_in';
 import Navbar from '../components/navbar';
+import { useSubscribe } from '../contexts/subscribed_context';
 
+export const SubscribedRoute = ({ children }) => {
 
-const PrivateRoute = ({ children }) => {
+    const { isAuthenticated, loading } = useAuth();
+    const { isSubscribed, loadingSubscribed} = useSubscribe();
+
+    return (
+        <>
+            { (!loading & !loadingSubscribed) ?
+
+                (isAuthenticated) ?
+                    isSubscribed ?
+                        children
+                    :
+                        <Navigate to='/subscribe' replace />
+                :
+                    <Navigate to='/sign_in' replace />
+            
+            :
+
+            <Loading />
+
+        }
+        </>
+
+    );
+};
+
+export const AuthenticateRoute = ({ children }) => {
 
     const { isAuthenticated, loading } = useAuth();
 
@@ -30,7 +56,7 @@ const PrivateRoute = ({ children }) => {
     );
 };
 
-const Loading = () => {
+export const Loading = () => {
 
     const { colorMode } = useColorMode();
 
@@ -46,4 +72,4 @@ const Loading = () => {
     )
 }
 
-export default PrivateRoute;
+export default SubscribedRoute;

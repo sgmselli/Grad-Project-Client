@@ -15,3 +15,6 @@ export const UPDATE_SET = (workout_id, exercise_id, set_id) => {return `${BASE}w
 
 export const UPDATE_EXERCISE = (workout_id, exercise_id) => {return `${BASE}workouts/${workout_id}/exercises/${exercise_id}`}
 
+export const STRIPE_CHECKOUT = `${BASE}stripe/checkout`;
+export const VALIDATE_SUBSCRIBED = `${BASE}auth/subscribed`;
+

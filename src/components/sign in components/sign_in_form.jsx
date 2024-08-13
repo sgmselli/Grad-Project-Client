@@ -3,9 +3,11 @@ import { VStack, HStack, Flex, Text, Box, useColorMode, Button, Divider, Absolut
 import { useState } from "react";
 import { IoSend, IoEyeOutline, IoEyeOffOutline  } from "react-icons/io5";
 import { GrFormNextLink } from "react-icons/gr";
-import { login } from "../../api/endpoints";
+import { check_subscribed, login } from "../../api/endpoints";
 import { useNavigate } from "react-router-dom";
+
 import { useAuth } from "../../contexts/auth_context";
+import { useSubscribe } from "../../contexts/subscribed_context";
 
 
 const Sign_In_Form = () => {
@@ -113,6 +115,7 @@ const Form = () => {
     const { colorMode } = useColorMode();
 
     const {login_client} = useAuth();
+    const { subscribe_client } = useSubscribe();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -122,8 +125,18 @@ const Form = () => {
         const login_response = await login(email, password);
 
         if (login_response['status'] == 200) {
-            await login_client()
-            nav('/menu')
+            login_client()
+            const subscribed = await check_subscribed();
+
+            if (subscribed) {
+                subscribe_client();
+                nav('/menu')
+            }
+            else {
+                login_client()
+                nav('/subscribe')
+            }
+
         } else {
             alert('error')
         }

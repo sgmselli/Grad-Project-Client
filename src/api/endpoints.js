@@ -1,4 +1,4 @@
-import { LOGIN, VALIDATE_AUTH, COMPLETED_WORKOUTS, PLANNED_WORKOUTS, UPDATE_WORKOUT, EXERCISES, SETS, UPDATE_SET, UPDATE_EXERCISE, ALL_EXERCISES, WORKOUTS } from "./endpoint_urls";
+import { LOGIN, VALIDATE_AUTH, COMPLETED_WORKOUTS, PLANNED_WORKOUTS, UPDATE_WORKOUT, EXERCISES, SETS, UPDATE_SET, UPDATE_EXERCISE, ALL_EXERCISES, WORKOUTS, VALIDATE_SUBSCRIBED } from "./endpoint_urls";
 import axios from 'axios';
 
 export const check_auth = async () => {
@@ -13,6 +13,19 @@ export const check_auth = async () => {
       } catch (error) {
         return false
       }
+}
+
+export const check_subscribed = async () => {
+  try {
+    const response = await axios.get(VALIDATE_SUBSCRIBED,
+    {
+      withCredentials: true, 
+    });
+    return response.data.subscribed
+
+  } catch (error) {
+    return false
+  }
 }
 
 export const login = async (email, password) => {
